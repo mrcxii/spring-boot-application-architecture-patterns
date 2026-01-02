@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>dev.sivalabs</groupId>
+    <artifactId>spring-boot-application-architecture-patterns</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>spring-boot-application-architecture-patterns</name>
+
+    <modules>
+        <module>meetup4j-layered</module>
+        <module>meetup4j-package-by-feature</module>
+        <module>meetup4j-modulith-simple</module>
+        <module>meetup4j-modulith-tomato</module>
+        <module>meetup4j-modulith-ddd-ha</module>
+    </modules>
+
+
+</project>

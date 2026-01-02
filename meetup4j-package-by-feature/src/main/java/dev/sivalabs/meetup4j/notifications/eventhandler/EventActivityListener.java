@@ -1,0 +1,29 @@
+package dev.sivalabs.meetup4j.notifications.eventhandler;
+
+import dev.sivalabs.meetup4j.events.domain.events.EventCancelled;
+import dev.sivalabs.meetup4j.events.domain.events.EventCreated;
+import dev.sivalabs.meetup4j.events.domain.events.EventPublished;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Service;
+
+@Service
+class EventActivityListener {
+    private static final Logger log = LoggerFactory.getLogger(EventActivityListener.class);
+
+    @EventListener
+    public void handle(EventCreated event) {
+        log.info("A new Event is created with code:{} and title: {}", event.code(), event.title());
+    }
+
+    @EventListener
+    public void handle(EventPublished event) {
+        log.info("Event with code:{} and title: {} is published", event.code(), event.title());
+    }
+
+    @EventListener
+    public void handle(EventCancelled event) {
+        log.info("Event with code:{} and title: {} is cancelled", event.code(), event.title());
+    }
+}

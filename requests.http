@@ -1,0 +1,73 @@
+### Get Upcoming Events
+GET http://localhost:8080/api/events
+
+### Get All Events
+GET http://localhost:8080/api/events/all
+
+
+### Get Event Details By Code
+GET http://localhost:8080/api/events/0NZZ6KKTZY98K
+
+
+### Create New Event
+POST http://localhost:8080/api/events
+Content-Type: application/json
+
+{
+  "title": "Test Event 1",
+  "description": "Test Event 1 Description",
+  "startDatetime":  "2025-12-10T10:00:00Z",
+  "endDatetime": "2025-12-10T18:00:00Z",
+  "type": "ONLINE",
+  "imageUrl": null,
+  "ticketPrice": 0.0,
+  "capacity": 100,
+  "venue": "Hyderabad, India",
+  "virtualLink": null
+}
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 201, "Response status is not 201");
+        client.global.set("new_event_code", response.body.code);
+    });
+%}
+
+### Publish Event
+PATCH http://localhost:8080/api/events/{{new_event_code}}/publish
+
+### Cancel Event
+DELETE http://localhost:8080/api/events/{{new_event_code}}
+
+
+### Register for event
+POST http://localhost:8080/api/registrations
+Content-Type: application/json
+
+{
+  "eventCode": "{{new_event_code}}",
+  "attendeeName": "Siva",
+  "attendeeEmail": "siva@gmail.com"
+}
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 201, "Response status is not 201");
+        client.global.set("new_event_reg_code", response.body.code);
+    });
+%}
+
+### Get Registrations of an Event
+GET http://localhost:8080/api/events/0NZZ6KKTZY98K/registrations
+
+### Cancel Event Registration
+DELETE http://localhost:8080/api/registrations/{{new_event_reg_code}}
+
+### Get Attendee names of an Event
+GET http://localhost:8080/api/events/0NZZ6KKTZY98K/registrations/attendees
+
+### Get Event Registration Status of an AttendeeEmail
+GET http://localhost:8080/api/events/0NZZ6KKTZY98K/registrations/status?attendeeEmail=siva@gmail.com
+
+### Get User Events by AttendeeEamil
+GET http://localhost:8080/api/user-events?attendeeEmail=siva@gmail.com
