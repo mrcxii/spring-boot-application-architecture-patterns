@@ -8,4 +8,10 @@ public class AssertUtil {
             throw new IllegalArgumentException(message);
         return obj;
     }
+
+    public static int requireMin(int value, int min, String message) {
+        if (value < min)
+            throw new IllegalArgumentException(message);
+        return value;
+    }
 }

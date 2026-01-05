@@ -4,8 +4,10 @@ import dev.sivalabs.meetup4j.events.domain.event.EventCancelled;
 import dev.sivalabs.meetup4j.events.domain.event.EventCreated;
 import dev.sivalabs.meetup4j.events.domain.event.EventPublished;
 import dev.sivalabs.meetup4j.events.domain.exception.EventCancellationException;
+import dev.sivalabs.meetup4j.events.domain.exception.EventSlotReservationException;
 import dev.sivalabs.meetup4j.events.domain.vo.*;
 import dev.sivalabs.meetup4j.shared.AggregateRoot;
+import dev.sivalabs.meetup4j.shared.AssertUtil;
 
 import java.time.Instant;
 
@@ -31,16 +33,16 @@ public class Event extends AggregateRoot {
                  Capacity capacity,
                  EventLocation location,
                  int registrationsCount) {
-        this.id = id;
-        this.code = code;
-        this.details = details;
-        this.schedule = schedule;
-        this.type = type;
-        this.status = eventStatus;
-        this.ticketPrice = ticketPrice;
-        this.capacity = capacity;
-        this.location = location;
-        this.registrationsCount = registrationsCount;
+        this.id = AssertUtil.requireNotNull(id, "Event ID cannot be null");
+        this.code = AssertUtil.requireNotNull(code, "Event code cannot be null");
+        this.details = AssertUtil.requireNotNull(details, "Event details cannot be null");
+        this.schedule = AssertUtil.requireNotNull(schedule, "Event schedule cannot be null");
+        this.type = AssertUtil.requireNotNull(type, "Event type cannot be null");
+        this.status = AssertUtil.requireNotNull(eventStatus, "Event status cannot be null");
+        this.ticketPrice = AssertUtil.requireNotNull(ticketPrice, "Event ticket price cannot be null");
+        this.capacity = AssertUtil.requireNotNull(capacity, "Event capacity cannot be null");
+        this.location = AssertUtil.requireNotNull(location, "Event location cannot be null");
+        this.registrationsCount = AssertUtil.requireMin(registrationsCount, 0, "Event registrations count cannot be negative");
     }
 
     public static Event createDraft(
@@ -105,8 +107,22 @@ public class Event extends AggregateRoot {
         return true;
     }
 
-    public Event updateRegistrationsCount(int registrationsCount) {
-        this.registrationsCount = registrationsCount;
+    public Event reserveSlot() {
+        if (this.getStatus() != EventStatus.PUBLISHED) {
+            throw new EventSlotReservationException("This event is not open for registration");
+        }
+        if (this.isStarted()) {
+            throw new EventSlotReservationException("Cannot register for past events");
+        }
+        if (!this.hasFreeSeats()) {
+            throw new EventSlotReservationException("Event is full");
+        }
+        this.registrationsCount = this.registrationsCount + 1;
+        return this;
+    }
+
+    public Event freeSlot() {
+        this.registrationsCount = this.registrationsCount - 1;
         return this;
     }
 

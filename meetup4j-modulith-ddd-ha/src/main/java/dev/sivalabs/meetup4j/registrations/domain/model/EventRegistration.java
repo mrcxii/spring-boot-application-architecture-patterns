@@ -23,7 +23,7 @@ public class EventRegistration extends AggregateRoot {
 
     public EventRegistration(RegistrationId id, RegistrationCode code, EventId eventId,
                              EventCode eventCode, String attendeeName, Email attendeeEmail, Instant registeredAt) {
-        this.id = id;
+        this.id = AssertUtil.requireNotNull(id, "Registration ID must not be null");
         this.code = AssertUtil.requireNotNull(code, "Registration code must not be null");
         this.eventId = AssertUtil.requireNotNull(eventId, "Event ID must not be null");
         this.eventCode = AssertUtil.requireNotNull(eventCode, "Event code must not be null");
