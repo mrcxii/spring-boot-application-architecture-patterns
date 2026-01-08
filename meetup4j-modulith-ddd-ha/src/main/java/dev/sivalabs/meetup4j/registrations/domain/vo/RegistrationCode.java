@@ -1,12 +1,11 @@
 package dev.sivalabs.meetup4j.registrations.domain.vo;
 
+import dev.sivalabs.meetup4j.shared.AssertUtil;
 import dev.sivalabs.meetup4j.shared.TSIDUtil;
 
 public record RegistrationCode(String code) {
     public RegistrationCode {
-        if (code == null || code.trim().isEmpty()) {
-            throw new IllegalArgumentException("Registration code cannot be null");
-        }
+        AssertUtil.requireNotBlank(code, "Registration code");
     }
 
     public static RegistrationCode of(String code) {

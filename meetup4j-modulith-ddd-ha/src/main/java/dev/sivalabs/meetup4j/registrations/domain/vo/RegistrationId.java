@@ -1,12 +1,12 @@
 package dev.sivalabs.meetup4j.registrations.domain.vo;
 
+import dev.sivalabs.meetup4j.shared.AssertUtil;
 import dev.sivalabs.meetup4j.shared.TSIDUtil;
 
 public record RegistrationId(Long id) {
     public RegistrationId {
-        if (id == null || id < 0) {
-            throw new IllegalArgumentException("Registration id cannot be null");
-        }
+        AssertUtil.requireNotNull(id, "Registration id");
+        AssertUtil.requireMin(id, 0, "Registration id cannot be negative");
     }
 
     public static RegistrationId of(Long id) {

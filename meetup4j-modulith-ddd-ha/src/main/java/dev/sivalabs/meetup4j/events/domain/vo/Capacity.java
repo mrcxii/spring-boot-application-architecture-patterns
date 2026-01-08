@@ -1,21 +1,13 @@
 package dev.sivalabs.meetup4j.events.domain.vo;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Positive;
+import dev.sivalabs.meetup4j.shared.AssertUtil;
 
-public record Capacity(
-        @JsonValue
-        @Positive(message = "Capacity must be positive")
-        @Max(value = 10000, message = "Capacity cannot exceed 10000")
-        Integer value) {
+public record Capacity(Integer value) {
     public static final Capacity UNLIMITED = new Capacity(null);
 
-    @JsonCreator
     public Capacity {
-        if (value != null && value < 0) {
-            throw new IllegalArgumentException("Capacity cannot be negative");
+        if(value != null) {
+            AssertUtil.requireSize(value, 0, 10000, "Capacity");
         }
     }
 

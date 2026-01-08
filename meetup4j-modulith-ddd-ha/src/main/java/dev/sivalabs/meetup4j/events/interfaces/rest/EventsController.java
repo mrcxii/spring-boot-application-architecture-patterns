@@ -8,7 +8,7 @@ import dev.sivalabs.meetup4j.events.application.command.dto.CreateEventCmd;
 import dev.sivalabs.meetup4j.events.application.command.dto.PublishEventCmd;
 import dev.sivalabs.meetup4j.events.application.query.EventQueryService;
 import dev.sivalabs.meetup4j.events.application.query.dto.EventVM;
-import dev.sivalabs.meetup4j.events.domain.vo.EventCode;
+import dev.sivalabs.meetup4j.events.domain.vo.*;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,12 +56,12 @@ class EventsController {
     @PostMapping
     ResponseEntity<CreateEventResponse> createEvent(@RequestBody @Valid CreateEventRequest request) {
         var cmd = new CreateEventCmd(
-                request.details(),
-                request.schedule(),
+                EventDetails.of(request.title(), request.description(), request.imageUrl()),
+                Schedule.of(request.startDatetime(), request.endDatetime()),
                 request.type(),
-                request.ticketPrice(),
-                request.capacity(),
-                request.location()
+                TicketPrice.of(request.ticketPrice()),
+                Capacity.of(request.capacity()),
+                EventLocation.of(request.venue(), request.virtualLink())
         );
         EventCode eventCode = createEventUseCase.createEvent(cmd);
         log.info("Event created with code: {}", eventCode);

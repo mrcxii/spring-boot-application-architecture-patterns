@@ -36,9 +36,9 @@ class EventRegistrationController {
     ResponseEntity<EventRegistrationResponse> registerForEvent(
             @RequestBody @Valid EventRegistrationRequest request) {
         var cmd = new RegisterAttendeeCmd(
-                request.eventCode(),
+                EventCode.of(request.eventCode()),
                 request.attendeeName(),
-                request.attendeeEmail());
+                Email.of(request.attendeeEmail()));
 
         var registrationCode = registerAttendeeUseCase.registerForEvent(cmd);
         log.info("Registration created with code: {}", registrationCode);

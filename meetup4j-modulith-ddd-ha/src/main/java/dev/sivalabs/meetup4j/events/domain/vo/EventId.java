@@ -1,12 +1,12 @@
 package dev.sivalabs.meetup4j.events.domain.vo;
 
+import dev.sivalabs.meetup4j.shared.AssertUtil;
 import dev.sivalabs.meetup4j.shared.TSIDUtil;
 
 public record EventId(Long id) {
     public EventId {
-        if (id == null || id < 0) {
-            throw new IllegalArgumentException("Event id cannot be null");
-        }
+        AssertUtil.requireNotNull(id, "Event id");
+        AssertUtil.requireMin(id, 0, "Event id cannot be negative");
     }
 
     public static EventId of(Long id) {

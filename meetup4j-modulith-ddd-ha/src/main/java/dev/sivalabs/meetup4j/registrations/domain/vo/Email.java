@@ -12,9 +12,7 @@ public record Email(@JsonValue String value) {
     @JsonCreator
     public Email {
         AssertUtil.requireNotNull(value, "Email cannot be null");
-        if (!EMAIL_PATTERN.matcher(value).matches()) {
-            throw new IllegalArgumentException("Invalid email format: " + value);
-        }
+        AssertUtil.requirePattern(value, EMAIL_PATTERN, "Invalid email format");
     }
 
     public static Email of(String value) {

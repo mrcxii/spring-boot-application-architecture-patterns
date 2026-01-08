@@ -23,13 +23,21 @@ public class EventRegistration extends AggregateRoot {
 
     public EventRegistration(RegistrationId id, RegistrationCode code, EventId eventId,
                              EventCode eventCode, String attendeeName, Email attendeeEmail, Instant registeredAt) {
-        this.id = AssertUtil.requireNotNull(id, "Registration ID must not be null");
-        this.code = AssertUtil.requireNotNull(code, "Registration code must not be null");
-        this.eventId = AssertUtil.requireNotNull(eventId, "Event ID must not be null");
-        this.eventCode = AssertUtil.requireNotNull(eventCode, "Event code must not be null");
-        this.attendeeName = AssertUtil.requireNotNull(attendeeName, "Attendee name must not be null");
-        this.attendeeEmail = AssertUtil.requireNotNull(attendeeEmail, "Attendee email must not be null");
-        this.registeredAt = AssertUtil.requireNotNull(registeredAt, "Registered at must not be null");
+        AssertUtil.requireNotNull(id, "Registration ID must not be null");
+        AssertUtil.requireNotNull(code, "Registration code must not be null");
+        AssertUtil.requireNotNull(eventId, "Event ID must not be null");
+        AssertUtil.requireNotNull(eventCode, "Event code must not be null");
+        AssertUtil.requireNotBlank(attendeeName, "Attendee name");
+        AssertUtil.requireNotNull(attendeeEmail, "Attendee email must not be null");
+        AssertUtil.requireNotNull(registeredAt, "Registered at must not be null");
+
+        this.id = id;
+        this.code = code;
+        this.eventId = eventId;
+        this.eventCode = eventCode;
+        this.attendeeName = attendeeName;
+        this.attendeeEmail = attendeeEmail;
+        this.registeredAt = registeredAt;
     }
 
     public static EventRegistration create(EventId eventId, EventCode eventCode,

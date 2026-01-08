@@ -33,16 +33,27 @@ public class Event extends AggregateRoot {
                  Capacity capacity,
                  EventLocation location,
                  int registrationsCount) {
-        this.id = AssertUtil.requireNotNull(id, "Event ID cannot be null");
-        this.code = AssertUtil.requireNotNull(code, "Event code cannot be null");
-        this.details = AssertUtil.requireNotNull(details, "Event details cannot be null");
-        this.schedule = AssertUtil.requireNotNull(schedule, "Event schedule cannot be null");
-        this.type = AssertUtil.requireNotNull(type, "Event type cannot be null");
-        this.status = AssertUtil.requireNotNull(eventStatus, "Event status cannot be null");
-        this.ticketPrice = AssertUtil.requireNotNull(ticketPrice, "Event ticket price cannot be null");
-        this.capacity = AssertUtil.requireNotNull(capacity, "Event capacity cannot be null");
-        this.location = AssertUtil.requireNotNull(location, "Event location cannot be null");
-        this.registrationsCount = AssertUtil.requireMin(registrationsCount, 0, "Event registrations count cannot be negative");
+        AssertUtil.requireNotNull(id, "Event ID cannot be null");
+        AssertUtil.requireNotNull(code, "Event code cannot be null");
+        AssertUtil.requireNotNull(details, "Event details cannot be null");
+        AssertUtil.requireNotNull(schedule, "Event schedule cannot be null");
+        AssertUtil.requireNotNull(type, "Event type cannot be null");
+        AssertUtil.requireNotNull(eventStatus, "Event status cannot be null");
+        AssertUtil.requireNotNull(ticketPrice, "Event ticket price cannot be null");
+        AssertUtil.requireNotNull(capacity, "Event capacity cannot be null");
+        AssertUtil.requireNotNull(location, "Event location cannot be null");
+        AssertUtil.requireMin(registrationsCount, 0, "Event registrations count cannot be negative");
+
+        this.id = id;
+        this.code = code;
+        this.details = details;
+        this.schedule = schedule;
+        this.type = type;
+        this.status = eventStatus;
+        this.ticketPrice = ticketPrice;
+        this.capacity = capacity;
+        this.location = location;
+        this.registrationsCount = registrationsCount;
     }
 
     public static Event createDraft(

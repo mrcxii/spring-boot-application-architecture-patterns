@@ -1,12 +1,14 @@
 package dev.sivalabs.meetup4j.registrations.interfaces.rest;
 
-import dev.sivalabs.meetup4j.events.domain.vo.EventCode;
-import dev.sivalabs.meetup4j.registrations.domain.vo.Email;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 public record EventRegistrationRequest(
-        @Valid EventCode eventCode,
-        @NotNull(message = "Attendee name is required") String attendeeName,
-        @NotNull(message = "Attendee email is required") Email attendeeEmail
+        @NotBlank(message = "Event code is required")
+        String eventCode,
+        @NotBlank(message = "Attendee name is required")
+        String attendeeName,
+        @NotBlank(message = "Attendee email is required")
+        @Email(message = "Invalid attendee email format")
+        String attendeeEmail
 ) {}
